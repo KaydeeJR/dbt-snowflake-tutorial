@@ -2,16 +2,20 @@ version: 2
 
 sources:
   - name: stripe
+    description: A clone of a Snowflake application database.
     database: raw
     schema: stripe
     tables:
     # 1 table
       - name: payment
+        description: Raw stripe payments data
         columns:
           - name: id
+            description: Primary key for payments
             tests:
               - unique              
               - not_null
+          
         # source freshness
         loaded_at_field: _batched_at
         freshness:

@@ -3,24 +3,32 @@ version: 2
 models:
 # 1 model
   - name: stg_payment
+    description: Stripe payment details
   # tests for 4 columns
     columns: 
       - name: id
+        description: primary key for orders
         tests: # singular tests
           - unique
           - not_null
       
+      - name: order_id
+        description: Foreign key to stg_orders.order_id. 
+      
+      - name: created_at
+        description: The date the payment was made. 
+      
       - name: paymentmethod
+        description: "{{ doc('stripe_payment_method') }}"
         tests:
           - accepted_values:
               values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
       
       - name: status
+        description: Payment status which can either be success or fail
         tests:
           - accepted_values:
               values: ['success', 'fail']
       
       - name: amount
-        tests:
-          - accepted_values:
-              values: ['success', 'fail']
+        description: The amount of money paid via stripe
