@@ -5,8 +5,20 @@ sources:
     database: raw
     schema: jaffle_shop
     tables:
+      # 2 tables
       - name: customers
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+      
       - name: orders
+        columns:
+          - name: id
+            tests:
+              - unique              
+              - not_null
         loaded_at_field: _etl_loaded_at
         freshness:
           warn_after: {count: 12, period: hour}

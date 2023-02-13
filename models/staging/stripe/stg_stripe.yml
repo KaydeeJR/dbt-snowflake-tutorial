@@ -1,0 +1,26 @@
+version: 2
+
+models:
+# 1 model
+  - name: stg_payment
+  # tests for 4 columns
+    columns: 
+      - name: id
+        tests: # singular tests
+          - unique
+          - not_null
+      
+      - name: paymentmethod
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
+      
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['success', 'fail']
+      
+      - name: amount
+        tests:
+          - accepted_values:
+              values: ['success', 'fail']

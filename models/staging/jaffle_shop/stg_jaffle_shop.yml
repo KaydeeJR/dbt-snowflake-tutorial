@@ -1,0 +1,36 @@
+version: 2
+
+models:
+# 2 models
+  - name: stg_customers
+    columns: 
+      - name: customer_id
+        tests: # singular tests
+          - unique
+          - not_null
+
+  - name: stg_orders
+    columns:
+      
+      - name: order_id
+        tests: # singular tests
+          - unique
+          - not_null
+      
+      - name: status
+        tests: # singular tests
+          - accepted_values: 
+              values:
+                - completed
+                - shipped
+                - returned
+                - return_pending
+                - placed
+      
+      - name: customer_id # field in stg_orders table
+        tests: 
+        # singular test
+        # must be related to customer id in stg_customers
+        - relationships:
+              to: ref('stg_customers')
+              field: customer_id
