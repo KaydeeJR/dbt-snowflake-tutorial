@@ -16,7 +16,7 @@ models:
         description: Foreign key to stg_orders.order_id. 
       
       - name: created_at
-        description: The date the payment was made. 
+        description: The date the payment was made. Dates are between January 1st, 2018 and April 9th, 2018
       
       - name: paymentmethod
         description: "{{ doc('stripe_payment_method') }}"
