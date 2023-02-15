@@ -1,3 +1,9 @@
+-- an ephemeral model is not built in the warehouse
+{{
+    config(
+        materialized='ephemeral'
+    )
+}}
 with orders as  (
     select * from {{ ref('stg_orders' )}}
 ),

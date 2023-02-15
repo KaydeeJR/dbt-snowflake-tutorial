@@ -1,0 +1,1 @@
+select * from raw.dbt_janerose_snapshot.mock_orders
