@@ -1,0 +1,8 @@
+packages:
+  # installing the package below raises a dbt deps failed with dbt runtime exception: 
+  # Found duplicate project "dbt_utils". This occurs when a dependency has the same project name as some
+  # other dependency.
+  # - package: gitlabhq/snowflake_spend
+  #   version: 1.2.0
+  - git: "https://github.com/dbt-labs/dbt-utils.git" # git URL
+    revision: 1.0.0 # tag or branch name
