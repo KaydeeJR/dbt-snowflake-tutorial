@@ -1,6 +1,3 @@
--- replaced raw.stripe.payment with source
--- replaced raw.jaffle_shop.orders with
--- replaced raw.jaffle_shop.customers with source
 WITH paid_orders as (select Orders.ID as order_id,
         Orders.USER_ID    as customer_id,
         Orders.ORDER_DATE AS order_placed_at,
@@ -9,7 +6,7 @@ WITH paid_orders as (select Orders.ID as order_id,
         p.payment_finalized_date,
         C.FIRST_NAME    as customer_first_name,
             C.LAST_NAME as customer_last_name
-    FROM {{ source('jaffle_shop', 'orders') }} raw.jaffle_shop.orders as Orders
+    FROM raw.jaffle_shop.orders as Orders
     left join (select ORDERID as order_id, max(CREATED) as payment_finalized_date, sum(AMOUNT) / 100.0 as total_amount_paid
 from raw.stripe.payment
 where STATUS <> 'fail'

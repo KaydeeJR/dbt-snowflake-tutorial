@@ -6,7 +6,7 @@ with
         last_name as surname,
         first_name as givenname,
         -- string concatenation
-        select first_name || ' ' || last_name as full_name,
+        first_name || ' ' || last_name as full_name,
         from customers_source
     )
 select *
